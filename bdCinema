@@ -1,0 +1,16 @@
+create schema Cinemas
+
+create table Cinemas(
+    id int primary key not null,
+    nome varchar(30) not null,
+    shopping varchar(50),
+    sala varchar(5),
+    cep varchar(8) not null,
+    instagram varchar(30),
+    numero varchar(8),
+    complemento varchar(50)
+)
+
+select * from Cinemas
+
+delete from Cinemas where id = 3
