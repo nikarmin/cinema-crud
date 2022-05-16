@@ -1,3 +1,8 @@
+/**
+ @author Andre Luis.
+ @since 2022.
+ */
+
 package main;
 
 public class Logradouro
@@ -10,7 +15,7 @@ public class Logradouro
     public void setLogradouro (String logradouro) throws Exception
     {
         if (logradouro==null || logradouro.length()==0)
-            throw new Exception ("main.Logradouro ausente");
+            throw new Exception ("Logradouro ausente");
 
         this.logradouro = logradouro;
     }

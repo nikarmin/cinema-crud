@@ -17,12 +17,11 @@ public class BDPostgreSQL
 
     	try
         {
-            // caso postar no github, retirar credenciais
             comando =
             new MeuPreparedStatement (
             "org.postgresql.Driver",
-            "jdbc:postgresql://ec2-18-210-64-223.compute-1.amazonaws.com/d7fbcjl694dt0q",
-            "ahwefcsbjmjsls", "820f1671fe1db3a07e41330d93fc7a7c0546eb515edae3753a16e6d88932da9f");
+            "jdbc:postgresql://SERVIDOR/BD",
+            "USUARIO", "SENHA");
         }
         catch (Exception erro)
         {
