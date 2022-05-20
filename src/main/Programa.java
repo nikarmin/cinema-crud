@@ -56,13 +56,13 @@ public class Programa
                             if (opcao == 0)
                                 System.exit(0);
                         }
-                        catch (Exception error) { System.err.println("Digite corretamente uma das opcoes!"); erro = true; }
+                        catch (Exception error) { System.err.println("\nDigite corretamente uma das opcoes!"); erro = true; }
 
                         try
                         {
                             if (opcao > 4 || opcao < 0)
                             {
-                                System.err.println("Digite corretamente uma das opcoes!\n\n");     // arrumar para fazer um looping
+                                System.err.println("\nDigite corretamente uma das opcoes!\n\n");     // arrumar para fazer um looping
                                     erro = true;
                             }
                         }
@@ -111,7 +111,7 @@ public class Programa
 
                                     for (int x = 0; x < cep.length(); x++)
                                     {
-                                        if (Character.isLetter(cep.charAt(x)))
+                                        if (!Character.isDigit(cep.charAt(x)))
                                             throw new Exception();
                                     }
                                 }
@@ -130,14 +130,12 @@ public class Programa
                                 System.out.print("Digite o complemento do cinema.: ");
                                 complemento = Teclado.getUmString();
 
-                                //Logradouro logradouro = (Logradouro)ClienteWS.getObjeto(Logradouro.class, "https://api.postmon.com.br/v1/cep", cep.toString());
-
                                 try
                                 {
                                     Cinemas.incluir(new Cinema(cod, nom, nomShop, salas, cep, insta, num, complemento));
                                     System.out.println("\n- CINEMA" + " " + (nom) + " " + "INCLUIDO");
 
-                                    System.out.print("\nPressione ENTER para continuar...");
+                                    System.out.print("\nPressione ENTER para continuar... ");
                                     Teclado.getUmString();
                                 }
                                 catch (Exception error)
@@ -169,21 +167,23 @@ public class Programa
                                         Logradouro logradouro = (Logradouro)ClienteWS.getObjeto(Logradouro.class, "https://api.postmon.com.br/v1/cep", ac.get(p).getCep());
                                         System.out.print("\n" + logradouro + "\n");
                                     }
-                                    System.out.print("\nPressione ENTER para continuar...");
-                                    Teclado.getUmString();
                                 }
                                 else if (decisao == '0')
                                 {
                                     System.out.print("\nDigite um CEP.: ");
                                     procura = Teclado.getUmString();
 
+                                    for (int x = 0; x < cep.length(); x++)
+                                    {
+                                        if (!Character.isDigit(cep.charAt(x)))
+                                            throw new Exception();
+                                    }
+
                                     try
                                     {
                                         System.out.println(Cinemas.getCinema(procura));
                                         Logradouro logradouro = (Logradouro) ClienteWS.getObjeto(Logradouro.class, "https://api.postmon.com.br/v1/cep", Cinemas.getCinema(procura).getCep());
                                         System.out.print("\n" + logradouro + "\n");
-                                        System.out.print("\nPressione ENTER para continuar...");
-                                        Teclado.getUmString();
                                     }
                                     catch (Exception error)
                                     {
@@ -195,6 +195,10 @@ public class Programa
                                 {
                                     System.err.println("Digite corretamente!\n");
                                 }
+
+                                System.out.print("\nPressione ENTER para continuar... ");
+                                Teclado.getUmString();
+
                                 opcaoMenu = true;
                                 erro = true;
                             break;
@@ -209,7 +213,7 @@ public class Programa
 
                                 System.out.println("\n"+Cinemas.getCinema(codEdi));
 
-                                System.out.print("\nPressione ENTER para continuar...");
+                                System.out.print("\nPressione ENTER para continuar... ");
                                 Teclado.getUmString();
 
                                 try
@@ -242,7 +246,7 @@ public class Programa
 
                                     for (int x = 0; x < cep.length(); x++)
                                     {
-                                        if (Character.isLetter(cep.charAt(x)))
+                                        if (!Character.isDigit(cep.charAt(x)))
                                             throw new Exception();
                                     }
                                 }
@@ -272,7 +276,7 @@ public class Programa
                                     System.out.println("\n-----------------------------------------------------\n");
                                 }
 
-                                System.out.print("\nPressione ENTER para continuar...");
+                                System.out.print("\nPressione ENTER para continuar... ");
                                 Teclado.getUmString();
 
                                 opcaoMenu = true;
@@ -288,6 +292,18 @@ public class Programa
                                 System.out.print("Digite o CEP do cinema que gostaria de excluir.: ");
                                 codEdi = Teclado.getUmString();
 
+                                try {
+                                    for (int x = 0; x < codEdi.length(); x++) {
+                                        if (!Character.isDigit(codEdi.charAt(x)))
+                                            throw new Exception();
+                                    }
+                                }
+                                catch (Exception error)
+                                {
+                                    System.err.println("\nDigite o CEP corretamente!");
+                                    break;
+                                }
+
                                 try
                                 {
                                     Cinemas.getCinema(codEdi);
@@ -295,7 +311,7 @@ public class Programa
 
                                     System.out.println("\n- CINEMA EXCLUIDO");
 
-                                    System.out.print("\nPressione ENTER para continuar...");
+                                    System.out.print("\nPressione ENTER para continuar... ");
                                     Teclado.getUmString();
                                 }
                                 catch (Exception error)

@@ -6,11 +6,9 @@
 package bd.daos;
 
 import bd.BDPostgreSQL;
-import bd.BDSQLServer;
 import bd.core.MeuResultSet;
 import bd.dbos.Cinema;
 
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -133,8 +131,8 @@ public class Cinemas
         if (cinema==null)
             throw new Exception ("Cinema nao fornecido");
 
-        if (!cadastrado (cinema.getCodigo()))
-            throw new Exception ("Nao cadastrado");
+        if (cadastrado (cinema.getCodigo()))
+            throw new Exception ("Ja existe um cinema neste local!");
 
         try
         {
