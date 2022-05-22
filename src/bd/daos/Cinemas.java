@@ -131,8 +131,10 @@ public class Cinemas
         if (cinema==null)
             throw new Exception ("Cinema nao fornecido");
 
-        if (cadastrado (cinema.getCodigo()))
-            throw new Exception ("Ja existe um cinema neste local!");
+        // retirada do método já que não fazia sentido 20/05/22
+
+        /*if (cadastrado (cinema.getCodigo()))
+            throw new Exception ("Ja existe um cinema neste local!");*/
 
         try
         {

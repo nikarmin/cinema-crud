@@ -62,7 +62,7 @@ public class Programa
                         {
                             if (opcao > 4 || opcao < 0)
                             {
-                                System.err.println("\nDigite corretamente uma das opcoes!\n\n");     // arrumar para fazer um looping
+                                System.err.println("\nDigite corretamente uma das opcoes!\n\n");
                                     erro = true;
                             }
                         }
